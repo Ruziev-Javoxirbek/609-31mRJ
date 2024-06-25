@@ -10,8 +10,8 @@ class CreateHallsTable extends Migration
     {
         Schema::create('halls', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // Наименование зала
-            $table->timestamps(); // Временные метки создания и обновления записи
+            $table->string('name');
+            $table->timestamps();
         });
     }
 

@@ -12,6 +12,7 @@ class CreateFilmsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('duration');
+            $table->string('genre')->nullable();
             $table->timestamps();
         });
     }
