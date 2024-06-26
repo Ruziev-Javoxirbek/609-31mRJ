@@ -11,6 +11,8 @@ class Film extends Model
 
     protected $table = 'films';
 
+    protected $fillable = ['name', 'duration', 'genre']; // Добавлен массив fillable
+
     public function sessions()
     {
         return $this->hasMany(MovieSession::class);
