@@ -1,4 +1,3 @@
-{{-- resources/views/films/index.blade.php --}}
 @extends('layouts.app')
 
 @section('content')
@@ -32,4 +31,10 @@
         @endforeach
         </tbody>
     </table>
+
+
+    <div>
+        {{ $films->appends(['perpage' => request('perpage')])->links() }}
+    </div>
 @endsection
+

@@ -8,9 +8,11 @@ use App\Models\Film;
 class FilmController extends Controller
 {
     // Display a listing of the resource.
-    public function index()
+    public function index(Request $request)
     {
-        return view('films.index', ['films' => Film::all()]);
+        $perPage = $request->perpage ?? 2; // Значение по умолчанию, если параметр не указан
+        $films = Film::paginate($perPage);
+        return view('films.index', compact('films', 'perPage'));
     }
 
     // Show the form for creating a new resource.
@@ -68,4 +70,5 @@ class FilmController extends Controller
         $film->delete();
         return redirect()->route('films.index')->with('success', 'Фильм удален успешно');
     }
+
 }
