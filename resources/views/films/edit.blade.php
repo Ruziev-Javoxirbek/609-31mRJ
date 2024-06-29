@@ -18,6 +18,10 @@
             <label>Жанр:</label>
             <input type="text" name="genre" value="{{ $film->genre }}" required>
         </div>
+        <div>
+            <label>Цена:</label>
+            <input type="text" name="price" value="{{ $film->price ?? '' }}" required>
+        </div>
         <button type="submit">Обновить</button>
     </form>
 @endsection

@@ -11,7 +11,7 @@ class Film extends Model
 
     protected $table = 'films';
 
-    protected $fillable = ['name', 'duration', 'genre']; // Добавлен массив fillable
+    protected $fillable = ['name', 'duration', 'genre', 'price']; // Добавлен массив fillable
 
     public function sessions()
     {

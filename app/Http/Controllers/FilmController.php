@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Film;
+use Illuminate\Support\Facades\Gate;
 
 class FilmController extends Controller
 {
@@ -27,7 +28,8 @@ class FilmController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255',
             'duration' => 'required|integer',
-            'genre' => 'nullable|string'
+            'genre' => 'nullable|string',
+            'price' => 'nullable|numeric' // Валидация для поля цены
         ]);
 
         $film = new Film($validated);
@@ -67,8 +69,13 @@ class FilmController extends Controller
     public function destroy(string $id)
     {
         $film = Film::findOrFail($id);
+
+        if (!Gate::allows('delete-film', $film)) {
+            return redirect('/error')->with('error', 'У вас нет разрешения на удаление этого фильма');
+        }
+
         $film->delete();
-        return redirect()->route('films.index')->with('success', 'Фильм удален успешно');
+        return redirect()->route('films.index')->with('success', 'Фильм успешно удален');
     }
 
 }

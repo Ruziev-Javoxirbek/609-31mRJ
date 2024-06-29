@@ -5,10 +5,16 @@
         @csrf
         <label for="name">Название фильма:</label>
         <input type="text" name="name" id="name" required>
+
         <label for="duration">Продолжительность (мин):</label>
         <input type="number" name="duration" id="duration" required>
+
         <label for="genre">Жанр:</label>
         <input type="text" name="genre" id="genre">
+
+        <label for="price">Цена:</label>
+        <input type="number" name="price" id="price" step="0.01">
+
         <button type="submit">Создать фильм</button>
     </form>
 @endsection
