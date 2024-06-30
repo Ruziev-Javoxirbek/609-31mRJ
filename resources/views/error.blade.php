@@ -1,5 +1,5 @@
 {{-- resources/views/error.blade.php --}}
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
     @if(session('error'))

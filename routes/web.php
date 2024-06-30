@@ -22,6 +22,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
     Route::resource('films', FilmController::class);
     Route::resource('sessions', SessionController::class);
+    Route::get('/films/create', [FilmController::class, 'create'])->name('films.create');
     // Добавьте дополнительные маршруты, которые должны быть доступны только аутентифицированным пользователям
 });
 // Маршрут для страницы ошибок

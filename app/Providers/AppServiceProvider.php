@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
         Paginator::defaultView('pagination::default');
 
         Gate::define('delete-film', function (User $user, Film $film) {
-            return $user->is_admin && $film->price > 600;
+            return $user->is_admin && $film->price > 400;
         });
     }
 }

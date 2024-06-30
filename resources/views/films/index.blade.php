@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout')
 
 @if(session('welcome_message'))
     <div class="alert alert-success">
@@ -16,11 +16,11 @@
             </form>
         </div>
 
-        <table border="1">
+        <table class="table table-striped">
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Названия</th>
+                <th>Название</th>
                 <th>Длительность (мин)</th>
                 <th>Жанр</th>
                 <th>Цена</th>
@@ -34,13 +34,13 @@
                     <td>{{ $film->name }}</td>
                     <td>{{ $film->duration }}</td>
                     <td>{{ $film->genre }}</td>
-                    <td>{{ number_format($film->price, 2) }}</td>
+                    <td>{{ number_format($film->price, 2) }}₽</td>
                     <td>
-                        <a href="{{ route('films.edit', $film->id) }}">Редактировать</a>
+                        <a href="{{ route('films.edit', $film->id) }}" class="btn btn-primary">Редактировать</a>
                         <form action="{{ route('films.destroy', $film->id) }}" method="POST" style="display:inline">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" onclick="return confirm('Вы уверены?')">Удалить</button>
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Вы уверены?')">Удалить</button>
                         </form>
                     </td>
                 </tr>
@@ -49,7 +49,7 @@
         </table>
 
         <div>
-            {{ $films->appends(['perpage' => request('perpage')])->links() }}
+            {{ $films->appends(['perpage' => request('perpage')])->links('pagination::bootstrap-4') }}
         </div>
     </div>
 @endsection

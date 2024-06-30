@@ -1,20 +1,26 @@
-@extends('layouts.app')
+@extends('layout')
 
 @section('content')
+    <h1>Добавить новый фильм</h1>
     <form method="POST" action="{{ route('films.store') }}">
         @csrf
-        <label for="name">Название фильма:</label>
-        <input type="text" name="name" id="name" required>
-
-        <label for="duration">Продолжительность (мин):</label>
-        <input type="number" name="duration" id="duration" required>
-
-        <label for="genre">Жанр:</label>
-        <input type="text" name="genre" id="genre">
-
-        <label for="price">Цена:</label>
-        <input type="number" name="price" id="price" step="0.01">
-
-        <button type="submit">Создать фильм</button>
+        <div class="mb-3">
+            <label for="name" class="form-label">Наименование</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Введите наименование фильма" maxlength="150" required>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Цена</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Введите цену фильма" required>
+        </div>
+        <div class="mb-3">
+            <label for="genre" class="form-label">Жанр</label>
+            <select class="form-select" id="genre" name="genre">
+                <option selected>Выберите жанр</option>
+                <option value="sci-fi">Sci-Fi</option>
+                <option value="drama">Драма</option>
+                <option value="comedy">Комедия</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Добавить</button>
     </form>
 @endsection
